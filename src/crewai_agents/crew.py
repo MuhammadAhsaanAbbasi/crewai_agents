@@ -1,5 +1,5 @@
-from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task
+from crewai import Agent, Crew, Process, Task # type: ignore
+from crewai.project import CrewBase, agent, crew, task # type: ignore
 
 # Uncomment the following line to use an example of a custom tool
 # from crewai_agents.tools.custom_tool import MyCustomTool
@@ -47,8 +47,8 @@ class CrewaiAgentsCrew():
 	def crew(self) -> Crew:
 		"""Creates the CrewaiAgents crew"""
 		return Crew(
-			agents=self.agents, # Automatically created by the @agent decorator
-			tasks=self.tasks, # Automatically created by the @task decorator
+			agents=[self.researcher(), self.reporting_analyst()], # Automatically created by the @agent decorator
+			tasks=[self.research_task(), self.reporting_task()], # Automatically created by the @task decorator
 			process=Process.sequential,
 			verbose=2,
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
